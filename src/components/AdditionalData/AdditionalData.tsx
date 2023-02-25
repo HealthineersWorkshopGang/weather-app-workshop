@@ -1,5 +1,5 @@
 import Widget, { WidgetProps } from "./Widget";
-import "./additionaldata.css";
+import "./additionaldata.scss";
 
 const data: WidgetProps[] = [
   {

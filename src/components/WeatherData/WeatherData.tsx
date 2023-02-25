@@ -1,4 +1,4 @@
-import "./weatherdata.css";
+import "./weatherdata.scss";
 
 function WeatherData() {
   return <div>WeatherData</div>;

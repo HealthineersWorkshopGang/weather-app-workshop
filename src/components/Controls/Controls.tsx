@@ -1,4 +1,4 @@
-import "./controls.css";
+import "./controls.scss";
 
 function Controls() {
   return <div>Controls</div>;
