@@ -1,0 +1,10 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.weather-app {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}

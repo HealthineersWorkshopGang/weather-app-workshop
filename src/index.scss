@@ -1,0 +1,25 @@
+$orange-shade-1: #cf4b00;
+$orange: #ec6602;
+$orange-tint-2: #f9b591;
+$orange-tint-3: #fdddcb;
+
+$petrol-shade-1: #02787d;
+$petrol: #009999;
+$petrol-tint-2: #87d2d2;
+$petrol-tint-3: #c8e6e6;
+
+html,
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: Helvetica, Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    padding: 0;
+    box-sizing: border-box;
+    background: linear-gradient(315deg, $orange 30%, $orange-tint-2 120%);
+    background-size: cover;
+}
