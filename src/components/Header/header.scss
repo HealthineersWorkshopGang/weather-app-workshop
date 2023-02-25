@@ -1,5 +1,8 @@
+@use "../../index.scss";
 .header {
-    margin: 20px auto;
-    padding: 5px;
     text-align: center;
+    h1 {
+        font-size: calc(40px + 1vw);
+        font-weight: 400;
+    }
 }
