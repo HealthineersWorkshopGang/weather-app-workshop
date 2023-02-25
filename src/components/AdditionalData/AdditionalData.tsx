@@ -21,7 +21,7 @@ const data: WidgetProps[] = [
 
 function AdditionalData() {
   return (
-    <>
+    <div className="additional-data">
       {data.map((props) => (
         <Widget
           key={props.text}
@@ -30,7 +30,7 @@ function AdditionalData() {
           unit={props.unit}
         />
       ))}
-    </>
+    </div>
   );
 }
 

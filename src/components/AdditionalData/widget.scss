@@ -1,0 +1,11 @@
+.widget {
+    min-width: 200px;
+    text-align: center;
+    border-bottom: 0.2rem solid white;
+    margin: 2rem;
+    box-sizing: border-box;
+    @media only screen and (min-width: 600px) {
+        border-right: 0.2rem solid white;
+        border-bottom: none;
+    }
+}

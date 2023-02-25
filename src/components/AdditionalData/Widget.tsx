@@ -1,3 +1,4 @@
+import "./widget.scss";
 export type WidgetProps = {
   value: number;
   text: string;
@@ -6,12 +7,12 @@ export type WidgetProps = {
 
 function Widget({ value, text, unit }: WidgetProps) {
   return (
-    <>
-      <div>
+    <div className="widget">
+      <div className="widget-value">
         {value} {unit}
       </div>
-      <div>{text}</div>
-    </>
+      <div className="widget-title">{text}</div>
+    </div>
   );
 }
 
