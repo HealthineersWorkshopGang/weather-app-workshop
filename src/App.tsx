@@ -1,6 +1,6 @@
 import "./App.css";
 import AdditionalData from "./components/AdditionalData";
-import Controls from "./components/Controls";
+import { Controls } from "./components/Controls";
 import { Header } from "./components/Header";
 import WeatherData from "./components/WeatherData";
 
