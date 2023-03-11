@@ -2,10 +2,10 @@ import { useState } from "react";
 import "./App.scss";
 import { AdditionalData } from "./components/AdditionalData/";
 import { WidgetProps } from "./components/AdditionalData/Widget";
-import { Controls, WeatherDataType } from "./components/Controls";
-
+import { Controls } from "./components/Controls";
 import { Header } from "./components/Header";
 import { WeatherData } from "./components/WeatherData";
+import { WeatherDataType } from "./types";
 
 function App() {
   const [weatherData, setWeatherData] = useState<WeatherDataType | null>(null);
