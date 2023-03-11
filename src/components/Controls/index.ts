@@ -1,2 +1,4 @@
 import Controls from "./Controls";
-export {Controls};
+import { WeatherDataType } from "./Controls";
+export { Controls };
+export type { WeatherDataType }

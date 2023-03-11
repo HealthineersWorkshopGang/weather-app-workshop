@@ -1,25 +1,13 @@
 import Widget, { WidgetProps } from "./Widget";
 import "./additionaldata.scss";
 
-const data: WidgetProps[] = [
-  {
-    value: 50,
-    unit: "%",
-    text: "Humidity",
-  },
-  {
-    value: 21,
-    unit: "km/h",
-    text: "Wind Speed",
-  },
-  {
-    value: 1010,
-    unit: "kPa",
-    text: "Pressure",
-  },
-];
 
-function AdditionalData() {
+
+type AdditionalDataProps = {
+  data: WidgetProps[]
+}
+
+function AdditionalData({ data }: AdditionalDataProps) {
   return (
     <div className="additional-data">
       {data.map((props) => (
