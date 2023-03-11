@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { fetchWeatherData } from "../../Api/FetchWeatherData";
 import { WeatherDataType } from "../../types";
 import { Input } from "../Shared/Input";
@@ -11,7 +11,8 @@ type ControlsProps = {
 function Controls({ setWeatherData }: ControlsProps) {
   const [city, setCity] = useState<string>("");
 
-  const handleGetWeather = () => {
+  const handleGetWeather = (event: FormEvent) => {
+    event.preventDefault();
     fetchWeatherData(city).then((data) => {
       setWeatherData(data);
     });
@@ -19,15 +20,16 @@ function Controls({ setWeatherData }: ControlsProps) {
 
   return (
     <div className="controls">
-      <Input
-        type="text"
-        value={city}
-        onChange={({ target }: React.ChangeEvent<HTMLInputElement>) =>
-          setCity(target.value)
-        }
-        placeholder="Write your city"
-      />
-      <button onClick={handleGetWeather}>Get weather</button>
+      <form onSubmit={handleGetWeather}>
+        <Input
+          type="text"
+          value={city}
+          onChange={({ target }: React.ChangeEvent<HTMLInputElement>) =>
+            setCity(target.value)
+          }
+          placeholder="Write your city"
+        />
+      </form>
     </div>
   );
 }
