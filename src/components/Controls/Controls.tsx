@@ -3,8 +3,6 @@ import { fetchWeatherData } from "../../Api/FetchWeatherData";
 import { WeatherDataType } from "../../types";
 import "./controls.scss";
 
-
-
 type ControlsProps = {
   setWeatherData: React.Dispatch<React.SetStateAction<WeatherDataType | null>>
 }
