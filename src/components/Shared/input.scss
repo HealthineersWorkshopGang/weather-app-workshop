@@ -1,0 +1,49 @@
+@use "../../index.scss";
+
+// VARIABLES // ============================== //
+
+$muted-color: mix(white, index.$orange-shade-1, 80%);
+$trans-time: 300ms;
+$width: 320px;
+
+:before,
+:after {
+  box-sizing: border-box;
+}
+.input-wrapper {
+  display: inline-block;
+
+  input {
+    background: index.$petrol-shade-1;
+    color: $muted-color;
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    width: $width;
+    border: none;
+    text-align: center;
+    border-radius: 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .bar:before {
+      width: calc($width + 15px);
+    }
+  }
+
+  .bar {
+    position: relative;
+    display: block;
+    &:before {
+      content: "";
+      height: 2px;
+      width: 0;
+      bottom: 0px;
+      position: absolute;
+      background: index.$petrol-tint-2;
+      transition: $trans-time ease all;
+      left: 0%;
+    }
+  }
+}
