@@ -15,6 +15,7 @@ function Controls({ setWeatherData }: ControlsProps) {
     event.preventDefault();
     fetchWeatherData(city).then((data) => {
       setWeatherData(data);
+      setCity("");
     });
   };
 
