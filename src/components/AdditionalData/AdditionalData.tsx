@@ -19,17 +19,14 @@ const createData = (weatherData: WeatherDataType | null) => {
       unit: "kPa",
       text: "Pressure",
     },
-  ] as WidgetProps[] ;
-}
-
-
+  ] as WidgetProps[];
+};
 
 type AdditionalDataProps = {
-  weatherData: WeatherDataType | null
-}
+  weatherData: WeatherDataType | null;
+};
 
 function AdditionalData({ weatherData }: AdditionalDataProps) {
-
   return (
     <div className="additional-data">
       {createData(weatherData).map((props) => (

@@ -63,3 +63,13 @@ export interface Sys {
   sunrise: number;
   sunset: number;
 }
+
+export interface Location {
+  name: string;
+  lat: number;
+  lon: number;
+  country: string;
+  state: string;
+}
+
+export type GeoData = Pick<Location, "lon" | "lat">;
