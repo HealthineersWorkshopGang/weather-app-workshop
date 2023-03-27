@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { GeoData, WeatherDataResponse, WeatherDataType } from "../types";
+import { API_KEY } from "./secrets";
 
 type GeoData2 = {
   lat: number;
@@ -18,9 +19,7 @@ export const useWeatherData = () => {
 
     (async () => {
       //
-      const response = await axios.get(
-        `https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&appid=34e438dc5b370c540424b507096617a2`
-      );
+      const response = await axios.get(buildWeatherDataUrl(geoData).toString());
       const data = (await response.data) as WeatherDataResponse;
 
       setWeatherData({
@@ -43,5 +42,14 @@ export const useWeatherData = () => {
     weatherData,
   };
 };
+
+function buildWeatherDataUrl(geoData: GeoData): URL {
+  const url = new URL("https://api.openweathermap.org/data/2.5/weather");
+  url.searchParams.set("lat", String(geoData.lat));
+  url.searchParams.set("lon", String(geoData.lon));
+  url.searchParams.set("units", "metric");
+  url.searchParams.set("appid", API_KEY);
+  return url;
+}
 
 // http://api.openweathermap.org/geo/1.0/direct?q=Brat&limit=15&appid=34e438dc5b370c540424b507096617a2
