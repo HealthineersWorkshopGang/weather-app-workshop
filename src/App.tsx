@@ -11,13 +11,23 @@ function App() {
   const { city, setCity, locations } = useLocation();
   const { setGeoData, weatherData } = useWeatherData();
 
+  console.log(locations);
+
   return (
     <div className="App">
       <Header title={weatherData?.name || "City was not set"} />
       <Controls city={city} setCity={setCity} />
       <LocationList locations={locations} setGeoData={setGeoData} />
-      <WeatherData />
-      <AdditionalData weatherData={weatherData} />
+
+      {weatherData && (
+        <>
+          <WeatherData
+            temperature={weatherData?.temperature}
+            icon={weatherData?.icon}
+          />
+          <AdditionalData weatherData={weatherData} />
+        </>
+      )}
     </div>
   );
 }
