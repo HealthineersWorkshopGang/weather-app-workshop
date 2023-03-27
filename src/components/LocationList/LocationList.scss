@@ -1,0 +1,26 @@
+@use "../../index.scss";
+
+.location-list {
+  ul {
+    list-style-type: none;
+    max-width: 320px;
+    padding: 0;
+    margin: 0 auto;
+    background-color: index.$petrol;
+
+    button {
+      all: unset;
+      width: 100%;
+      font-size: 18px;
+      padding: 10px 15px;
+      box-sizing: border-box;
+      &:focus {
+        background-color: index.$orange;
+      }
+      &:hover {
+        cursor: pointer;
+        background-color: index.$orange-shade-1;
+      }
+    }
+  }
+}
