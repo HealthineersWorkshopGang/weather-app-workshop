@@ -30,6 +30,7 @@ function buildLocationUrl(city: string): URL {
   const url = new URL("http://api.openweathermap.org/geo/1.0/direct");
   url.searchParams.set("q", city);
   url.searchParams.set("appid", API_KEY);
+  url.searchParams.set("limit", "5");
   return url;
 }
 
