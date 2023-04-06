@@ -1,9 +1,11 @@
+import { useSelector } from "react-redux";
 import "./header.scss";
-type HeaderProps = {
-  title: string;
-};
+import { RootState } from "../../app/store";
 
-function Header({ title }: HeaderProps) {
+
+function Header() {
+  const { name: title } = useSelector((state: RootState) => state.weatherData)
+
   return (
     <div className="header">
       <h1>{title}</h1>

@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 import { WeatherDataType } from "../../types";
 import "./additionaldata.scss";
 import Widget, { WidgetProps } from "./Widget";
@@ -22,11 +24,11 @@ const createData = (weatherData: WeatherDataType | null) => {
   ] as WidgetProps[];
 };
 
-type AdditionalDataProps = {
-  weatherData: WeatherDataType | null;
-};
 
-function AdditionalData({ weatherData }: AdditionalDataProps) {
+
+function AdditionalData() {
+  const weatherData = useSelector((state: RootState) => state.weatherData)
+
   return (
     <div className="additional-data">
       {createData(weatherData).map((props) => (

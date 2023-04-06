@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux";
+import { RootState } from "../../app/store";
 import { WeatherDataType } from "../../types";
 import "./weatherdata.scss";
 
-type WeatherDataProps = Pick<WeatherDataType, "temperature" | "icon">;
 
-function WeatherData({ icon, temperature }: WeatherDataProps) {
-  console.log(temperature);
+
+function WeatherData() {
+  const { icon, temperature } = useSelector((state: RootState) => state.weatherData)
 
   return (
     <div

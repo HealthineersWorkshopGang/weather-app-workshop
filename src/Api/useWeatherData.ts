@@ -2,6 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { GeoData, WeatherDataResponse, WeatherDataType } from "../types";
 import { API_KEY } from "./secrets";
+import { useDispatch } from "react-redux";
+import { setWeatherData } from "../features/weather/weatherDataSlice";
 
 type GeoData2 = {
   lat: number;
@@ -10,7 +12,9 @@ type GeoData2 = {
 
 export const useWeatherData = () => {
   const [geoData, setGeoData] = useState<GeoData>({} as GeoData);
-  const [weatherData, setWeatherData] = useState<WeatherDataType | null>(null);
+  const dispatch = useDispatch();
+
+
 
   useEffect(() => {
     if (!geoData || geoData.lat === undefined) {
@@ -22,14 +26,14 @@ export const useWeatherData = () => {
       const response = await axios.get(buildWeatherDataUrl(geoData).toString());
       const data = (await response.data) as WeatherDataResponse;
 
-      setWeatherData({
+      dispatch(setWeatherData({
         hummidity: data.main.humidity,
         icon: data.weather[0].icon,
         temperature: data.main.temp,
         pressure: data.main.pressure,
         wind: data.wind.speed,
         name: data.name,
-      } as WeatherDataType);
+      } as WeatherDataType))
     })();
 
     return () => {
@@ -39,7 +43,6 @@ export const useWeatherData = () => {
 
   return {
     setGeoData,
-    weatherData,
   };
 };
 

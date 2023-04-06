@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { useLocation } from "./Api/useLocation";
 import { useWeatherData } from "./Api/useWeatherData";
 import "./App.scss";
@@ -6,26 +7,25 @@ import { Controls } from "./components/Controls";
 import { Header } from "./components/Header";
 import { LocationList } from "./components/LocationList";
 import { WeatherData } from "./components/WeatherData";
+import { RootState } from "./app/store";
+import { isWeatherDataFetched } from "./features/weather/weatherDataSlice";
 
 function App() {
   const { city, setCity, locations } = useLocation();
-  const { setGeoData, weatherData } = useWeatherData();
+  const { setGeoData } = useWeatherData();
+  const isWeatherDataAvailable = useSelector(isWeatherDataFetched);
 
-  console.log(locations);
 
   return (
     <div className="App">
-      <Header title={weatherData?.name || "City was not set"} />
+      <Header />
       <Controls city={city} setCity={setCity} />
       <LocationList locations={locations} setGeoData={setGeoData} />
 
-      {weatherData && (
+      {isWeatherDataAvailable && (
         <>
-          <WeatherData
-            temperature={weatherData?.temperature}
-            icon={weatherData?.icon}
-          />
-          <AdditionalData weatherData={weatherData} />
+          <WeatherData />
+          <AdditionalData />
         </>
       )}
     </div>
