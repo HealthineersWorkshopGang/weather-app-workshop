@@ -1,25 +1,24 @@
-import { useSelector } from "react-redux";
-import { GeoData, Location } from "../../types";
-import "./LocationList.scss";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
+import { setGeoData } from "../../features/weather/locationsSlice";
+import { Location } from "../../types";
+import "./LocationList.scss";
 
-type LocationListProps = {
-  setGeoData: React.Dispatch<React.SetStateAction<GeoData>>;
-};
 
 function prettyLocationName(location: Location) {
   return `${location.name} | ${location.state} - ${location.country}`;
 }
 
-export const LocationList = ({ setGeoData }: LocationListProps) => {
+export const LocationList = () => {
   const locations = useSelector((state: RootState) => state.locations.locations);
+  const dispatch = useDispatch();
 
   function onHandleLocationSelect(location: Location) {
     console.log(location.lat, location.lon);
-    setGeoData({
+    dispatch(setGeoData({
       lat: location.lat,
       lon: location.lon,
-    });
+    }));
   }
 
   return (

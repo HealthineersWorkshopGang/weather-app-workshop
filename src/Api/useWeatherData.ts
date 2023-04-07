@@ -2,8 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { GeoData, WeatherDataResponse, WeatherDataType } from "../types";
 import { API_KEY } from "./secrets";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setWeatherData } from "../features/weather/weatherDataSlice";
+import { RootState } from "../app/store";
 
 type GeoData2 = {
   lat: number;
@@ -11,7 +12,8 @@ type GeoData2 = {
 };
 
 export const useWeatherData = () => {
-  const [geoData, setGeoData] = useState<GeoData>({} as GeoData);
+  const geoData = useSelector((state: RootState) => state.locations.geoData);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -38,10 +40,6 @@ export const useWeatherData = () => {
       console.log("Unmount");
     };
   }, [geoData.lat, geoData.lon]);
-
-  return {
-    setGeoData,
-  };
 };
 
 function buildWeatherDataUrl(geoData: GeoData): URL {

@@ -11,14 +11,15 @@ import { isWeatherDataFetched } from "./features/weather/weatherDataSlice";
 
 function App() {
   useLocation();
-  const { setGeoData } = useWeatherData();
+  useWeatherData();
+
   const isWeatherDataAvailable = useSelector(isWeatherDataFetched);
 
   return (
     <div className="App">
       <Header />
       <Controls />
-      <LocationList setGeoData={setGeoData} />
+      <LocationList />
 
       {isWeatherDataAvailable && (
         <>
