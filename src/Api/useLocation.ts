@@ -2,12 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Location } from "../types";
 import { API_KEY } from "./secrets";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/store";
+import { setLocations } from "../features/weather/locationsSlice";
 
 export const useLocation = () => {
   const city = useSelector((state: RootState) => state.locations.city);
-  const [locations, setLocations] = useState<Location[]>([]);
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     if (!city) {
@@ -17,14 +19,10 @@ export const useLocation = () => {
     (async () => {
       const response = await axios.get(buildLocationUrl(city).toString());
       const data: Location[] = await response.data;
-      setLocations(data);
+      dispatch(setLocations(data));
     })();
   }, [city]);
 
-  return {
-    city,
-    locations,
-  };
 };
 
 function buildLocationUrl(city: string): URL {

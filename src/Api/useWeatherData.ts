@@ -14,8 +14,6 @@ export const useWeatherData = () => {
   const [geoData, setGeoData] = useState<GeoData>({} as GeoData);
   const dispatch = useDispatch();
 
-
-
   useEffect(() => {
     if (!geoData || geoData.lat === undefined) {
       return;
