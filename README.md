@@ -6,6 +6,9 @@
 
 - [Workshop 1](#workshop-1-21022023)
 - [Workshop 2](#workshop-2-07032023)
+- [Workshop 3](#workshop-3-21032023)
+- [Workshop 4](#workshop-4-03042023)
+- [Workshop 5](#workshop-5-17042023)
 
 ---
 
@@ -42,3 +45,23 @@ First workshop introduces React components. We learn how to divide app into comp
 ###### _Pre workshop preparation:_
 
 We are using [OpenWeatherMap API](https://openweathermap.org/api) and for following the second workshop properly, you need to [register](https://home.openweathermap.org/users/sign_in) and optain the API KEY. Registration is free of charge and we can use up to 1000 requests per day.
+
+### Workshop 3: 21/03/2023
+
+We are continuing on our app, we can search for location and display some weather date
+
+### Workshop 4: 03/04/2023
+
+We introduced Redux for state managements. You can follow their tutorial on [Redux toolkit](https://redux-toolkit.js.org/introduction/getting-started)
+
+For good working with Redux, it recommended to add [Redux Dev Tools](https://www.google.com/search?q=redux+dev+tool) to your web browser.
+
+### Workshop 5: 17/04/2023
+
+The last workshop! We will devide this into 2 parts. The first part will be about the topic of your selection ie useContext or app optimization. The second part will be your own work based on task like:
+
+- As a user, I want location list and search bar to clear after selecting the city
+- As a user, I want to save api calls by adding geoData to cache (localStorage) for already searched locations.
+- As a user, I want to see top three searched locations display. (Bonus: store in cache). 
+- As a user, I want the weather data to be displayed after clicking on one of the top three locations.
+- and maybe more ...
