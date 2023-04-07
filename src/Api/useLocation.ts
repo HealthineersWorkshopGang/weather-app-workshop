@@ -2,9 +2,11 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Location } from "../types";
 import { API_KEY } from "./secrets";
+import { useSelector } from "react-redux";
+import { RootState } from "../app/store";
 
 export const useLocation = () => {
-  const [city, setCity] = useState<string>("");
+  const city = useSelector((state: RootState) => state.locations.city);
   const [locations, setLocations] = useState<Location[]>([]);
 
   useEffect(() => {
@@ -21,7 +23,6 @@ export const useLocation = () => {
 
   return {
     city,
-    setCity,
     locations,
   };
 };

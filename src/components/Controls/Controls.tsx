@@ -1,12 +1,15 @@
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../app/store";
+import { setCity } from "../../features/weather/locationsSlice";
 import { Input } from "../Shared/Input";
 import "./controls.scss";
 
-type ControlsProps = {
-  city: string;
-  setCity: React.Dispatch<React.SetStateAction<string>>;
-};
 
-function Controls({ setCity, city }: ControlsProps) {
+
+function Controls() {
+  const city = useSelector((state: RootState) => state.locations.city);
+  const dispatch = useDispatch();
+
   return (
     <div className="controls">
       <form>
@@ -14,7 +17,7 @@ function Controls({ setCity, city }: ControlsProps) {
           type="text"
           value={city}
           onChange={({ target }: React.ChangeEvent<HTMLInputElement>) =>
-            setCity(target.value)
+            dispatch(setCity(target.value))
           }
           placeholder="Write your city"
         />

@@ -7,11 +7,10 @@ import { Controls } from "./components/Controls";
 import { Header } from "./components/Header";
 import { LocationList } from "./components/LocationList";
 import { WeatherData } from "./components/WeatherData";
-import { RootState } from "./app/store";
 import { isWeatherDataFetched } from "./features/weather/weatherDataSlice";
 
 function App() {
-  const { city, setCity, locations } = useLocation();
+  const { locations } = useLocation();
   const { setGeoData } = useWeatherData();
   const isWeatherDataAvailable = useSelector(isWeatherDataFetched);
 
@@ -19,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <Controls city={city} setCity={setCity} />
+      <Controls />
       <LocationList locations={locations} setGeoData={setGeoData} />
 
       {isWeatherDataAvailable && (
