@@ -31,11 +31,15 @@ export const locationsSlice = createSlice({
         setGeoData: (state, action: PayloadAction<LocationState["geoData"]>) => {
             state.geoData = action.payload
         },
+        clearLocations: (state) => {
+            state.city = "";
+            state.locations = [];
+        }
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { setCity, setLocations, setGeoData } = locationsSlice.actions
+export const { setCity, setLocations, setGeoData, clearLocations } = locationsSlice.actions
 export const topThreeLocationsSelector = (state: RootState) => state.locations.topThree;
 
 export default locationsSlice.reducer

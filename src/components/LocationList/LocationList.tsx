@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../app/store";
-import { setGeoData } from "../../features/weather/locationsSlice";
+import { setGeoData, clearLocations } from "../../features/weather/locationsSlice";
 import { Location } from "../../types";
 import "./LocationList.scss";
 
 
 function prettyLocationName(location: Location) {
-  return `${location.name} | ${location.state} - ${location.country}`;
+  return `${location.name} | ${location.state || ""}  ${location.state ? "-" : ""} ${location.country || ""}`;
 }
 
 export const LocationList = () => {
@@ -19,6 +19,7 @@ export const LocationList = () => {
       lat: location.lat,
       lon: location.lon,
     }));
+    dispatch(clearLocations());
   }
 
   return (
